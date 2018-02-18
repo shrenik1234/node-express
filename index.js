@@ -3,7 +3,7 @@ const http = require('http');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const dishRouter = require('./routes/dishRouter');
-const promotionRouter = require('./routes/promotionRouter');
+const promotionRouter = require('./routes/promoRouter');
 const leaderRouter = require('./routes/leaderRouter');
 
 const hostname = 'localhost';
@@ -14,7 +14,7 @@ app.use(morgan('dev'));
 
 //Setting us the routers
 app.use('/dishes', dishRouter);
-app.use('/promotions', promotionRouter);
+app.use('/promotions', promoRouter);
 app.use('/leaders', leaderRouter);
 
 //setting up the application

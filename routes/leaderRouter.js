@@ -7,28 +7,33 @@ leaderRouter.use(bodyParser.json());
 
 leaderRouter.route('/')
 .all((req,res,next) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    next();
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  next();
 })
 .get((req,res,next) => {
-    res.end('Listing all the leaders for you!');
+  res.end('Listing all the leaders for you!');
 })
 .post((req, res, next) => {
-    res.end('Adding leader with name: ' + req.body.name +
-      ' with  leader details: ' + req.body.description);
+  res.end('Adding leader with name: ' + req.body.name +
+  ' with  leader details: ' + req.body.description);
 })
 .put((req, res, next) => {
-    res.statusCode = 403;
-    res.end('PUT operation not supported on /leaderes');
+  res.statusCode = 403;
+  res.end('PUT operation not supported on /leaderes');
 })
 .delete((req, res, next) => {
-    res.end('Deleting all leaders...');
+  res.end('Deleting all leaders...');
 });
 
 leaderRouter.route('/:leaderId')
+.all((req,res,next) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  next();
+})
 .get((req,res,next) => {
-    res.end('Will send details of the leader: ' + req.params.leaderId +' to you!');
+  res.end('Will send details of the leader: ' + req.params.leaderId +' to you!');
 })
 .post((req, res, next) => {
   res.statusCode = 403;
@@ -40,7 +45,7 @@ leaderRouter.route('/:leaderId')
     ' with details: ' + req.body.description);
 })
 .delete((req, res, next) => {
-    res.end('Deleting leader: ' + req.params.leaderId);
+  res.end('Deleting leader: ' + req.params.leaderId);
 });
 
 module.exports = leaderRouter;
